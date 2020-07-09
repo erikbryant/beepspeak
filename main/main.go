@@ -1,9 +1,16 @@
 package main
 
 import (
+	"flag"
 	"github.com/erikbryant/beepspeak"
 )
 
+var (
+	passPhrase = flag.String("passPhrase", "", "Passphrase to unlock API key")
+)
+
 func main() {
-	beepspeak.Say("hello")
+	flag.Parse()
+
+	beepspeak.Say("hello", *passPhrase)
 }

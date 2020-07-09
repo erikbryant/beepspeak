@@ -1,4 +1,4 @@
-package main
+package beepspeak
 
 // $ apt install libasound2-dev
 
@@ -6,8 +6,13 @@ import (
 	"bytes"
 	"cloud.google.com/go/texttospeech/apiv1"
 	"context"
-	"github.com/erikbryant/aes"
-	"github.com/erikbryant/web"
+	"flag"
+	"fmt"
+	"log"
+	"os"
+	"strings"
+	"time"
+	// "github.com/erikbryant/aes"
 	"github.com/faiface/beep"
 	"github.com/faiface/beep/mp3"
 	"github.com/faiface/beep/speaker"
@@ -16,7 +21,7 @@ import (
 )
 
 var (
-	passPhrase     = flag.String("passPhrase", "", "Passphrase to unlock API key")
+	passPhrase = flag.String("passPhrase", "", "Passphrase to unlock API key")
 )
 
 // playStream plays a given audio stream.
@@ -81,8 +86,8 @@ func readable(text string) string {
 	return text
 }
 
-// say converts text to speech and then plays it.
-func say(text string) {
+// Say converts text to speech and then plays it.
+func Say(text string) {
 	text = readable(text)
 
 	ctx := context.Background()
@@ -120,42 +125,4 @@ func say(text string) {
 		return
 	}
 	playStream(s, format)
-}
-
-// alert prints a message and plays an alert tone.
-func alert(details database.Ship) {
-	fmt.Printf(
-		"\nShip Ahoy!  %s  %s\n%+v\n\n",
-		time.Now().Format("Mon Jan 2 15:04:05"),
-		decodeMmsi(details.MMSI),
-		prettify(details),
-	)
-
-	if strings.Contains(strings.ToLower(details.Type), "vehicle") {
-		play("meep.wav")
-	} else if strings.Contains(strings.ToLower(details.Type), "pilot") {
-		play("pilot.mp3")
-	} else {
-		play("ship_horn.mp3")
-	}
-
-	summary := fmt.Sprintf("Ship ahoy! %s. %s. Course %3.f degrees.", details.Name, details.Type, details.ShipCourse)
-
-	// Hearing, "eleven point zero knots" sounds awkward. Remove the "point zero".
-	if math.Trunc(details.Speed) == details.Speed {
-		summary = fmt.Sprintf("%s Speed %3.0f knots.", summary, math.Trunc(details.Speed))
-	} else {
-		summary = fmt.Sprintf("%s Speed %3.1f knots.", summary, details.Speed)
-	}
-
-	switch details.Sightings {
-	case 0:
-		summary = fmt.Sprintf("%s This is the first sighting.", summary)
-	case 1:
-		summary = fmt.Sprintf("%s One previous sighting.", summary)
-	default:
-		summary = fmt.Sprintf("%s %d previous sightings.", summary, details.Sightings)
-	}
-
-	say(summary)
 }

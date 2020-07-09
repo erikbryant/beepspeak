@@ -109,12 +109,7 @@ func readable(text string) string {
 }
 
 // Say converts text to speech and then plays it.
-func Say(text string, passPhrase string) {
-	err := writeGcpAuth(passPhrase)
-	if err != nil {
-		panic(err)
-	}
-
+func Say(text string) {
 	text = readable(text)
 
 	ctx := context.Background()

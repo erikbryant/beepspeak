@@ -12,5 +12,6 @@ var (
 func main() {
 	flag.Parse()
 
-	beepspeak.Say("hello", *passPhrase)
+	beepspeak.InitSay(*passPhrase)
+	beepspeak.Say("hello")
 }

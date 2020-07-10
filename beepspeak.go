@@ -128,7 +128,7 @@ func Say(text string) {
 		},
 		AudioConfig: &texttospeechpb.AudioConfig{
 			AudioEncoding: texttospeechpb.AudioEncoding_LINEAR16,
-			SpeakingRate:  1.0,
+			SpeakingRate:  1.2,
 		},
 	}
 	resp, err := c.SynthesizeSpeech(ctx, req)

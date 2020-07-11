@@ -6,14 +6,12 @@ import (
 	"bytes"
 	"cloud.google.com/go/texttospeech/apiv1"
 	"context"
-	"fmt"
 	"github.com/erikbryant/aes"
 	"github.com/faiface/beep"
 	"github.com/faiface/beep/mp3"
 	"github.com/faiface/beep/speaker"
 	"github.com/faiface/beep/wav"
 	texttospeechpb "google.golang.org/genproto/googleapis/cloud/texttospeech/v1"
-	"log"
 	"os"
 	"strings"
 	"time"
@@ -31,7 +29,10 @@ func InitSay(gcpAuthCrypt, passPhrase string) error {
 
 	defer f.Close()
 
-	gcpAuth := aes.Decrypt(gcpAuthCrypt, passPhrase)
+	gcpAuth, err := aes.Decrypt(gcpAuthCrypt, passPhrase)
+	if err != nil {
+		return err
+	}
 
 	_, err = f.WriteString(gcpAuth + "\n")
 	if err != nil {
@@ -39,7 +40,10 @@ func InitSay(gcpAuthCrypt, passPhrase string) error {
 	}
 
 	// The Google API looks for the auth using an env var.
-	os.Setenv("GOOGLE_APPLICATION_CREDENTIALS", path)
+	err = os.Setenv("GOOGLE_APPLICATION_CREDENTIALS", path)
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -60,12 +64,11 @@ func playStream(s beep.StreamSeekCloser, format beep.Format) {
 	<-playing
 }
 
-// play plays a given sound file. MP3 and WAV are supported.
-func Play(file string) {
+// Play plays a given sound file. MP3 and WAV are supported.
+func Play(file string) error {
 	f, err := os.Open(file)
 	if err != nil {
-		fmt.Println("Could not open audio file", file)
-		return
+		return err
 	}
 
 	var (
@@ -76,43 +79,45 @@ func Play(file string) {
 	if strings.HasSuffix(file, ".wav") {
 		s, format, err = wav.Decode(f)
 		if err != nil {
-			fmt.Println("Could not decode WAV audio file", file, err)
-			return
+			return err
 		}
 	} else {
 		s, format, err = mp3.Decode(f)
 		if err != nil {
-			fmt.Println("Could not decode MP3 audio file", file, err)
-			return
+			return err
 		}
 	}
 
 	playStream(s, format)
+
+	return nil
 }
 
 // readable makes a string more human readable by removing some non alphanumeric
 // and non-punctuation.
 func readable(text string) string {
 	text = strings.TrimSpace(text)
+
 	text = strings.ReplaceAll(text, "_", " ")
-	text = strings.ReplaceAll(text, "/", "")
-	text = strings.ReplaceAll(text, "^", "")
+	text = strings.ReplaceAll(text, "/", " ")
 	text = strings.ReplaceAll(text, "[", " ")
 	text = strings.ReplaceAll(text, "]", " ")
+
 	text = strings.ReplaceAll(text, "\"", "")
+	text = strings.ReplaceAll(text, "^", "")
 
 	return text
 }
 
 // Say converts text to speech and then plays it.
-func Say(text string) {
+func Say(text string) error {
 	text = readable(text)
 
 	ctx := context.Background()
 
 	c, err := texttospeech.NewClient(ctx)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	req := &texttospeechpb.SynthesizeSpeechRequest{
@@ -133,15 +138,16 @@ func Say(text string) {
 	}
 	resp, err := c.SynthesizeSpeech(ctx, req)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	r := bytes.NewReader(resp.GetAudioContent())
 	s, format, err := wav.Decode(r)
 	if err != nil {
-		fmt.Println("Could not decode WAV speech stream", text, err)
-		return
+		return err
 	}
 
 	playStream(s, format)
+
+	return nil
 }

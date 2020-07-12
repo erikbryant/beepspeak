@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"cloud.google.com/go/texttospeech/apiv1"
 	"context"
+	"fmt"
 	"github.com/erikbryant/aes"
 	"github.com/faiface/beep"
 	"github.com/faiface/beep/mp3"
@@ -111,6 +112,11 @@ func readable(text string) string {
 
 // Say converts text to speech and then plays it.
 func Say(text string) error {
+	_, ok := os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALSxx")
+	if !ok {
+		return fmt.Errorf("ERROR: env var is not set; did you call InitSay()")
+	}
+
 	text = readable(text)
 
 	ctx := context.Background()
@@ -133,7 +139,7 @@ func Say(text string) error {
 		},
 		AudioConfig: &texttospeechpb.AudioConfig{
 			AudioEncoding: texttospeechpb.AudioEncoding_LINEAR16,
-			SpeakingRate:  1.2,
+			SpeakingRate:  1.1,
 		},
 	}
 	resp, err := c.SynthesizeSpeech(ctx, req)

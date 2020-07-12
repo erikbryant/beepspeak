@@ -18,8 +18,8 @@ func TestInitSay(t *testing.T) {
 	cipherText = "hlwjlfFMLUIWbbjyphbr4b1mbCsGYS3Ciy4gXvSnZg=="
 	passPhrase = "foo"
 
-	env := os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")
-	if env != "" {
+	env, ok := os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALS")
+	if ok {
 		t.Errorf("ERROR: env var is already set, %v", env)
 	}
 
@@ -28,8 +28,8 @@ func TestInitSay(t *testing.T) {
 		t.Errorf("ERROR: Expected err == nil, got %v", err)
 	}
 
-	env = os.Getenv("GOOGLE_APPLICATION_CREDENTIALS")
-	if env == "" {
+	_, ok = os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALS")
+	if !ok {
 		t.Errorf("ERROR: env var is not set")
 	}
 }

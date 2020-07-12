@@ -2,7 +2,9 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"github.com/erikbryant/beepspeak"
+	"os"
 )
 
 var (
@@ -14,6 +16,10 @@ var (
 func main() {
 	flag.Parse()
 
-	beepspeak.InitSay(gcpAuthCrypt, *passPhrase)
-	beepspeak.Say("hello")
+	// beepspeak.InitSay(gcpAuthCrypt, *passPhrase)
+	err := beepspeak.Say("hello")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }

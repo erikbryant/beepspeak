@@ -112,7 +112,7 @@ func readable(text string) string {
 
 // Say converts text to speech and then plays it.
 func Say(text string) error {
-	_, ok := os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALSxx")
+	_, ok := os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALS")
 	if !ok {
 		return fmt.Errorf("ERROR: env var is not set; did you call InitSay()")
 	}

@@ -3,8 +3,8 @@ module github.com/erikbryant/beepspeak
 go 1.14
 
 require (
-	cloud.google.com/go v0.72.0
+	cloud.google.com/go v0.73.0
 	github.com/erikbryant/aes v0.1.1
 	github.com/faiface/beep v1.0.3-0.20200712202812-d836f29bdc50
-	google.golang.org/genproto v0.0.0-20201109203340-2640f1f9cdfb
+	google.golang.org/genproto v0.0.0-20201203001206-6486ece9c497
 )

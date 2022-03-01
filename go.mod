@@ -1,10 +1,33 @@
 module github.com/erikbryant/beepspeak
 
-go 1.14
+go 1.17
 
 require (
 	cloud.google.com/go/texttospeech v1.2.0
 	github.com/erikbryant/aes v0.1.1
-	github.com/faiface/beep v1.0.3-0.20200712202812-d836f29bdc50
-	google.golang.org/genproto v0.0.0-20220207164111-0872dc986b00
+	github.com/faiface/beep v1.1.0
+	google.golang.org/genproto v0.0.0-20220228195345-15d65a4533f7
+)
+
+require (
+	cloud.google.com/go/compute v0.1.0 // indirect
+	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/google/go-cmp v0.5.7 // indirect
+	github.com/googleapis/gax-go/v2 v2.1.1 // indirect
+	github.com/hajimehoshi/go-mp3 v0.3.0 // indirect
+	github.com/hajimehoshi/oto v0.7.1 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
+	go.opencensus.io v0.23.0 // indirect
+	golang.org/x/exp v0.0.0-20200224162631-6cc2880d07d6 // indirect
+	golang.org/x/image v0.0.0-20190802002840-cff245a6509b // indirect
+	golang.org/x/mobile v0.0.0-20190719004257-d2bd2a29d028 // indirect
+	golang.org/x/net v0.0.0-20210503060351-7fd8e65b6420 // indirect
+	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8 // indirect
+	golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27 // indirect
+	golang.org/x/text v0.3.6 // indirect
+	google.golang.org/api v0.67.0 // indirect
+	google.golang.org/appengine v1.6.7 // indirect
+	google.golang.org/grpc v1.44.0 // indirect
+	google.golang.org/protobuf v1.27.1 // indirect
 )

@@ -1,3 +1,7 @@
+![go fmt](https://github.com/erikbryant/beepspeak/actions/workflows/fmt.yml/badge.svg)
+![go vet](https://github.com/erikbryant/beepspeak/actions/workflows/vet.yml/badge.svg)
+![go test](https://github.com/erikbryant/beepspeak/actions/workflows/test.yml/badge.svg)
+
 # Beep Speak
 
 Takes audio files as input and plays them. Also takes text as input, converts it to speech, and plays it.

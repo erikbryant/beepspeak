@@ -3,15 +3,17 @@ module github.com/erikbryant/beepspeak
 go 1.17
 
 require (
-	cloud.google.com/go/texttospeech v1.5.0
+	cloud.google.com/go/texttospeech v1.6.0
 	github.com/erikbryant/aes v0.1.1
 	github.com/faiface/beep v1.1.0
 	google.golang.org/genproto v0.0.0-20221207170731-23e4bf6bdc37
 )
 
 require (
+	cloud.google.com/go v0.107.0 // indirect
 	cloud.google.com/go/compute v1.13.0 // indirect
 	cloud.google.com/go/compute/metadata v0.2.1 // indirect
+	cloud.google.com/go/longrunning v0.3.0 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect

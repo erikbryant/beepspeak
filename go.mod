@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/texttospeech v1.6.0
 	github.com/erikbryant/aes v0.1.1
 	github.com/faiface/beep v1.1.0
-	google.golang.org/genproto v0.0.0-20230112194545-e10362b5ecf9
+	google.golang.org/genproto v0.0.0-20230113154510-dbe35b8444a5
 )
 
 require (

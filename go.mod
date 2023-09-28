@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	cloud.google.com/go/texttospeech v1.7.1
-	github.com/erikbryant/aes v0.1.1
+	github.com/erikbryant/aes v0.2.0
 	github.com/faiface/beep v1.1.0
 	google.golang.org/genproto v0.0.0-20230920204549-e6e6cdab5c13
 )

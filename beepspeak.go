@@ -4,18 +4,20 @@ package beepspeak
 
 import (
 	"bytes"
-	"cloud.google.com/go/texttospeech/apiv1"
 	"context"
 	"fmt"
+	"os"
+	"strings"
+	"time"
+
+	texttospeech "cloud.google.com/go/texttospeech/apiv1"
 	"github.com/erikbryant/aes"
 	"github.com/faiface/beep"
 	"github.com/faiface/beep/mp3"
 	"github.com/faiface/beep/speaker"
 	"github.com/faiface/beep/wav"
-	texttospeechpb "google.golang.org/genproto/googleapis/cloud/texttospeech/v1"
-	"os"
-	"strings"
-	"time"
+
+	texttospeechpb "cloud.google.com/go/texttospeech/apiv1/texttospeechpb"
 )
 
 // InitSay saves our GCP Speech API credentials to disk so that the

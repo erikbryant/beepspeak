@@ -26,8 +26,8 @@ github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1m
 github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7+kN2VEUnK/pcBlmesArF7c=
 github.com/envoyproxy/protoc-gen-validate v1.0.2 h1:QkIBuU5k+x7/QXPvPPnWXWlCdaBFApVqftFV6k087DA=
 github.com/envoyproxy/protoc-gen-validate v1.0.2/go.mod h1:GpiZQP3dDbg4JouG/NNS7QWXpgx6x8QiMKdmN72jogE=
-github.com/erikbryant/aes v0.2.0 h1:nDs9POVjoYNzSsW40JlTOmlcoEnG6avPe7wieZoQlvw=
-github.com/erikbryant/aes v0.2.0/go.mod h1:LUWSBXtHE/RAN102ZlCR4weAaNtEXPWQpOVg3g/Wmec=
+github.com/erikbryant/aes v0.3.0 h1:Ap4KGrn9yaaiOticxf1MD2KBKKvJKiy45QEc1ng814k=
+github.com/erikbryant/aes v0.3.0/go.mod h1:u+FeFwr15zM2pTGJGCEPjZKZgESvNLrNnInKR9N83zE=
 github.com/faiface/beep v1.1.0 h1:A2gWP6xf5Rh7RG/p9/VAW2jRSDEGQm5sbOb38sf5d4c=
 github.com/faiface/beep v1.1.0/go.mod h1:6I8p6kK2q4opL/eWb+kAkk38ehnTunWeToJB+s51sT4=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=

@@ -17,7 +17,7 @@ import (
 	"github.com/faiface/beep/speaker"
 	"github.com/faiface/beep/wav"
 
-	texttospeechpb "cloud.google.com/go/texttospeech/apiv1/texttospeechpb"
+	"cloud.google.com/go/texttospeech/apiv1/texttospeechpb"
 )
 
 // InitSay saves our GCP Speech API credentials to disk so that the
@@ -54,7 +54,10 @@ func InitSay(gcpAuthCrypt, passPhrase string) error {
 // playStream plays a given audio stream.
 func playStream(s beep.StreamSeekCloser, format beep.Format) {
 	// Init the Speaker with the SampleRate of the format and a buffer size.
-	speaker.Init(format.SampleRate, format.SampleRate.N(3*time.Second))
+	err := speaker.Init(format.SampleRate, format.SampleRate.N(3*time.Second))
+	if err != nil {
+		fmt.Println("error calling speaker.Init(), sound is likely to not work", err)
+	}
 
 	// Channel, which will signal the end of the playback.
 	playing := make(chan struct{})
@@ -96,7 +99,7 @@ func Play(file string) error {
 	return nil
 }
 
-// readable makes a string more human readable by removing some non alphanumeric
+// readable makes a string more human-readable by removing some non-alphanumeric
 // and non-punctuation.
 func readable(text string) string {
 	text = strings.TrimSpace(text)

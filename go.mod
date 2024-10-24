@@ -3,7 +3,7 @@ module github.com/erikbryant/beepspeak
 go 1.23.1
 
 require (
-	cloud.google.com/go/texttospeech v1.8.1
+	cloud.google.com/go/texttospeech v1.9.0
 	github.com/erikbryant/aes v0.3.0
 	github.com/faiface/beep v1.1.0
 )
@@ -40,7 +40,7 @@ require (
 	golang.org/x/sys v0.26.0 // indirect
 	golang.org/x/text v0.19.0 // indirect
 	golang.org/x/time v0.7.0 // indirect
-	google.golang.org/api v0.202.0 // indirect
+	google.golang.org/api v0.203.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20241021214115-324edc3d5d38 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241021214115-324edc3d5d38 // indirect
 	google.golang.org/grpc v1.67.1 // indirect

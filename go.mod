@@ -3,7 +3,7 @@ module github.com/erikbryant/beepspeak
 go 1.23.1
 
 require (
-	cloud.google.com/go/texttospeech v1.9.0
+	cloud.google.com/go/texttospeech v1.10.0
 	github.com/erikbryant/aes v0.3.0
 	github.com/faiface/beep v1.1.0
 )

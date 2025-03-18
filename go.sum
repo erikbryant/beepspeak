@@ -14,8 +14,8 @@ github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q
 github.com/d4l3k/messagediff v1.2.2-0.20190829033028-7e0a312ae40b/go.mod h1:Oozbb1TVXFac9FtSIxHBMnBCq2qeH/2KkEQxENCrlLo=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/erikbryant/aes v0.3.0 h1:Ap4KGrn9yaaiOticxf1MD2KBKKvJKiy45QEc1ng814k=
-github.com/erikbryant/aes v0.3.0/go.mod h1:u+FeFwr15zM2pTGJGCEPjZKZgESvNLrNnInKR9N83zE=
+github.com/erikbryant/aes v0.4.0 h1:obZHjv5b+cxyGocqvKMiCpN4QGjRwG5r7vPrYtWT3nA=
+github.com/erikbryant/aes v0.4.0/go.mod h1:Awmp9n4/zhnQgZ/YmkotbY2TEKFLi9Zh87cRbw5WdhM=
 github.com/faiface/beep v1.1.0 h1:A2gWP6xf5Rh7RG/p9/VAW2jRSDEGQm5sbOb38sf5d4c=
 github.com/faiface/beep v1.1.0/go.mod h1:6I8p6kK2q4opL/eWb+kAkk38ehnTunWeToJB+s51sT4=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=

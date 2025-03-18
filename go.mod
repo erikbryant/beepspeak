@@ -4,7 +4,7 @@ go 1.24.1
 
 require (
 	cloud.google.com/go/texttospeech v1.11.2
-	github.com/erikbryant/aes v0.3.0
+	github.com/erikbryant/aes v0.4.0
 	github.com/faiface/beep v1.1.0
 )
 

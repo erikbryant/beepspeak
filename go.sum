@@ -8,8 +8,8 @@ cloud.google.com/go/compute/metadata v0.9.0 h1:pDUj4QMoPejqq20dK0Pg2N4yG9zIkYGdB
 cloud.google.com/go/compute/metadata v0.9.0/go.mod h1:E0bWwX5wTnLPedCKqk3pJmVgCBSM6qQI1yTBdEb3C10=
 cloud.google.com/go/longrunning v0.9.0 h1:0EzbDEGsAvOZNbqXopgniY0w0a1phvu5IdUFq8grmqY=
 cloud.google.com/go/longrunning v0.9.0/go.mod h1:pkTz846W7bF4o2SzdWJ40Hu0Re+UoNT6Q5t+igIcb8E=
-cloud.google.com/go/texttospeech v1.17.0 h1:zwqHUyaxtzsmcIYMAygBHFuC/5/C31iBhRTvFYe8mvM=
-cloud.google.com/go/texttospeech v1.17.0/go.mod h1:qXUktcF2pHd2Gh9GcY2NFEtZPnIeC+kKVPC3wes7LSk=
+cloud.google.com/go/texttospeech v1.19.0 h1:4AfzGgXxLCaXgoH1rlRzvsnhHXsI3Ef4gBB5EZTreKQ=
+cloud.google.com/go/texttospeech v1.19.0/go.mod h1:p/UVJILAo/S5vsJaWZVdDRzNzA7wXIA+hTACvpMeOBk=
 github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
 github.com/cespare/xxhash/v2 v2.3.0 h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=
 github.com/cespare/xxhash/v2 v2.3.0/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=

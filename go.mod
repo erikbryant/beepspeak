@@ -1,6 +1,6 @@
 module github.com/erikbryant/beepspeak
 
-go 1.25.5
+go 1.26.3
 
 require (
 	cloud.google.com/go/texttospeech v1.21.0

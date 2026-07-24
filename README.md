@@ -20,7 +20,7 @@ if err != nil {
   return err
 }
 
-beepspeak.Play("mymusic.mp3")
+err = beepspeak.Play("mymusic.mp3")
 if err != nil {
   return err
 }
@@ -35,7 +35,7 @@ import (
 )
 
 // Put your GCP Speech API credentials in plainText.
-plainText := "<redacted>"
+plainText := "GXHhERGEWRS/XlSDS+RB..."
 passphrase := "MySuperSecurePassword"
 
 cipherText, err := aes.Encrypt(plainText, passphrase)

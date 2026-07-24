@@ -10,7 +10,7 @@ func TestInitSay(t *testing.T) {
 	passPhrase := ""
 
 	// Invalid cipherText / passPhrase
-	err := InitSay(cipherText, passPhrase)
+	err := NewCredentials(cipherText, passPhrase)
 	if err == nil {
 		t.Errorf("ERROR: Expected err != nil")
 	}
@@ -23,7 +23,7 @@ func TestInitSay(t *testing.T) {
 		t.Errorf("ERROR: env var is already set, %v", env)
 	}
 
-	err = InitSay(cipherText, passPhrase)
+	err = NewCredentials(cipherText, passPhrase)
 	if err != nil {
 		t.Errorf("ERROR: Expected err == nil, got %v", err)
 	}

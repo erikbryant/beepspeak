@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -20,9 +21,9 @@ import (
 	"cloud.google.com/go/texttospeech/apiv1/texttospeechpb"
 )
 
-// InitSay saves our GCP Speech API credentials to disk so that the
+// NewCredentials saves our GCP Speech API credentials to disk so that the
 // GCP speech API can find them.
-func InitSay(gcpAuthCrypt, passPhrase string) error {
+func NewCredentials(gcpAuthCrypt, passPhrase string) error {
 	path := os.TempDir() + "/" + "gcp_auth.json"
 
 	f, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0644)
@@ -76,22 +77,28 @@ func Play(file string) error {
 	if err != nil {
 		return err
 	}
+	defer f.Close()
 
 	var (
 		s      beep.StreamSeekCloser
 		format beep.Format
 	)
 
-	if strings.HasSuffix(file, ".wav") {
+	switch filepath.Ext(file) {
+	case ".wav":
 		s, format, err = wav.Decode(f)
 		if err != nil {
 			return err
 		}
-	} else {
+		defer s.Close()
+	case ".mp3":
 		s, format, err = mp3.Decode(f)
 		if err != nil {
 			return err
 		}
+		defer s.Close()
+	default:
+		return fmt.Errorf("audio format not supported, %s", file)
 	}
 
 	playStream(s, format)
@@ -103,23 +110,15 @@ func Play(file string) error {
 // and non-punctuation.
 func readable(text string) string {
 	text = strings.TrimSpace(text)
-
-	text = strings.ReplaceAll(text, "_", " ")
-	text = strings.ReplaceAll(text, "/", " ")
-	text = strings.ReplaceAll(text, "[", " ")
-	text = strings.ReplaceAll(text, "]", " ")
-
-	text = strings.ReplaceAll(text, "\"", "")
-	text = strings.ReplaceAll(text, "^", "")
-
-	return text
+	r := strings.NewReplacer("_", " ", "/", " ", "[", " ", "]", " ", "\"", "", "^", "")
+	return r.Replace(text)
 }
 
 // Say converts text to speech and then plays it.
 func Say(text string) error {
 	_, ok := os.LookupEnv("GOOGLE_APPLICATION_CREDENTIALS")
 	if !ok {
-		return fmt.Errorf("ERROR: env var is not set; did you call InitSay()")
+		return fmt.Errorf("GOOGLE_APPLICATION_CREDENTIALS is not set; did you call InitSay()")
 	}
 
 	text = readable(text)
@@ -130,6 +129,7 @@ func Say(text string) error {
 	if err != nil {
 		return err
 	}
+	defer c.Close()
 
 	req := &texttospeechpb.SynthesizeSpeechRequest{
 		Input: &texttospeechpb.SynthesisInput{

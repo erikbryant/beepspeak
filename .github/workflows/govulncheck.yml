@@ -6,11 +6,16 @@ jobs:
   govulncheck:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Go
+      - name: Set up Golang
         uses: actions/setup-go@v6
         with:
           go-version: 'stable'
           check-latest: 'true'
+      - name: Install sound libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install libasound2-dev
+          sudo apt-get install libudev-dev
       - name: Check out sourcce code
         uses: actions/checkout@v6
       - name: Run govulncheck
